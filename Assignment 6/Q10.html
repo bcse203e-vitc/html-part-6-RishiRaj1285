@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Builder</title>
+</head>
+<body>
+  <h3>Dynamic Form Builder</h3>
+  <select id="type">
+    <option value="text">Text</option>
+    <option value="email">Email</option>
+    <option value="password">Password</option>
+  </select>
+  <button type="button" onclick="addField()">Add</button>
+
+  <form id="myform" onsubmit="return validateForm()">
+    <div id="fields"></div>
+    <p><button type="submit">Submit</button></p>
+  </form>
+  <div id="msg"></div>
+
+  <script>
+    var regex = {
+      text: /^[a-zA-Z0-9 ]+$/,
+      email: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+      password: /^.{6,}$/
+    };
+
+    function addField() {
+      var t = document.getElementById("type").value;
+      var fields = document.getElementById("fields");
+
+      var input = document.createElement("input");
+      input.type = t;
+      input.name = t;
+      input.placeholder = "Enter " + t;
+
+      fields.appendChild(input);
+      fields.appendChild(document.createElement("br"));
+    }
+
+    function validateForm() {
+      var f = document.getElementById("fields").getElementsByTagName("input");
+      var msg = document.getElementById("msg");
+      for (var i = 0; i < f.length; i++) {
+        if (regex[f[i].type]) {
+          if (!regex[f[i].type].test(f[i].value)) {
+            msg.innerHTML = "Invalid " + f[i].type + " input!";
+            msg.style.color = "red";
+            return false;
+          }
+        }
+      }
+      msg.innerHTML = "All inputs are valid!";
+      msg.style.color = "green";
+      return true;
+    }
+  </script>
+</body>
+</html>
