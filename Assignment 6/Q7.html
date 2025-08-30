@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Check</title>
+</head>
+<body>
+  <form id="form">
+    <label>Date (DD/MM/YYYY): </label>
+    <input type="text" id="dt">
+    <input type="submit" value="Submit">
+    <div id="out"></div>
+  </form>
+
+  <script>
+    var form = document.getElementById("form");
+    var dt = document.getElementById("dt");
+    var out = document.getElementById("out");
+    var reg = /^\d{2}\/\d{2}\/\d{4}$/;
+
+    form.addEventListener("submit", function(e) {
+      if (!reg.test(dt.value)) {
+        e.preventDefault();
+        alert("Invalid date! Please enter in DD/MM/YYYY format");
+        out.textContent = "Error: Wrong format.";
+        out.style.color = "red";
+      } else {
+        out.textContent = "Date format is correct!";
+        out.style.color = "green";
+      }
+    });
+  </script>
+</body>
+</html>
