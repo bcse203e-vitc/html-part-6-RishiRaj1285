@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dropdown Example</title>
+</head>
+<body>
+  <p>
+    Continent:
+    <select id="cont">
+      <option value="">--Choose--</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Africa">Africa</option>
+    </select>
+  </p>
+
+  <p>
+    Country:
+    <select id="coun">
+      <option value="">--Choose--</option>
+    </select>
+  </p>
+
+  <script>
+    var cont = document.getElementById("cont");
+    var coun = document.getElementById("coun");
+
+    var data = new Map([
+      ["Asia", ["India", "Nepal", "Bhutan"]],
+      ["Europe", ["Spain", "Norway", "Poland"]],
+      ["Africa", ["Ghana", "Morocco", "Tanzania"]]
+    ]);
+
+    cont.addEventListener("change", function() {
+      coun.innerHTML = "<option value=''>--Choose--</option>";
+      var sel = cont.value;
+      if (data.has(sel)) {
+        data.get(sel).forEach(function(c) {
+          var opt = document.createElement("option");
+          opt.value = c;
+          opt.textContent = c;
+          coun.appendChild(opt);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
