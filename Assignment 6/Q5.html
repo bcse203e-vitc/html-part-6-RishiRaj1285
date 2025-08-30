@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Check</title>
+</head>
+<body>
+  <form>
+    <p>Password: <input type="password" id="p1"></p>
+    <p>Confirm Password: <input type="password" id="p2"></p>
+    <p id="out"></p>
+  </form>
+
+  <script>
+    var p1 = document.getElementById("p1");
+    var p2 = document.getElementById("p2");
+    var out = document.getElementById("out");
+
+    function matchCheck() {
+      if (p1.value && p2.value) {
+        if (p1.value === p2.value) {
+          out.textContent = "Passwords match";
+          out.style.color = "green";
+        } else {
+          out.textContent = "Passwords do not match";
+          out.style.color = "red";
+        }
+      } else {
+        out.textContent = "";
+      }
+    }
+
+    p1.addEventListener("input", matchCheck);
+    p2.addEventListener("input", matchCheck);
+  </script>
+</body>
+</html>
