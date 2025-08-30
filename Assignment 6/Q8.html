@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Code Check</title>
+</head>
+<body>
+  <p>Enter Hex Color: <input type="text" id="col"></p>
+  <div id="preview" style="width:60px;height:30px;border:1px solid black;display:inline-block;background:lightgray;"></div>
+  <p id="out"></p>
+
+  <script>
+    var col = document.getElementById("col");
+    var preview = document.getElementById("preview");
+    var out = document.getElementById("out");
+    var reg = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+    col.addEventListener("input", function() {
+      var val = col.value;
+      if (reg.test(val)) {
+        preview.style.background = val;
+        out.textContent = "Hex code is valid!";
+        out.style.color = "green";
+      } else {
+        preview.style.background = "lightgray";
+        out.textContent = "Invalid hex format!";
+        out.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
