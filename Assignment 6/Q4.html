@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hobbies Form</title>
+</head>
+<body>
+  <h3>Enter Your Hobbies</h3>
+  <form id="form">
+    <button type="button" onclick="addHobby()">Add Hobby</button>
+    <br><br>
+    <input type="text" name="hobby" placeholder="Enter hobby"><br><br>
+    
+  </form>
+
+  <script>
+    function addHobby() {
+      var form = document.getElementById("form");
+      var input = document.createElement("input");
+      input.type = "text";
+      input.name = "hobby";
+      input.placeholder = "Enter hobby";
+      form.appendChild(document.createElement("br"));
+      form.appendChild(document.createElement("br"));
+      form.appendChild(input);
+    }
+  </script>
+</body>
+</html>
